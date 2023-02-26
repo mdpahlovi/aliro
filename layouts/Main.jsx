@@ -60,7 +60,7 @@ const Main = ({ title = "Redux Content Management" }) => {
                 <MobileNav open={openNav}>
                     <div className="container mx-auto lg:hidden">
                         {navList}
-                        <Button variant="gradient" size="sm" fullWidth className="mb-6">
+                        <Button size="sm" fullWidth className="mb-6">
                             <span>Buy Now</span>
                         </Button>
                     </div>
