@@ -1,7 +1,8 @@
-import { ThemeProvider, useTheme } from "@material-tailwind/react";
+import { ThemeProvider as MaterialTailwindTheme, useTheme } from "@material-tailwind/react";
 import "../styles/globals.css";
 import { Provider } from "react-redux";
 import store from "../redux/store";
+import { ThemeProvider } from "next-themes";
 
 export default function App({ Component, pageProps }) {
     const theme = {
@@ -36,8 +37,10 @@ export default function App({ Component, pageProps }) {
 
     return (
         <Provider store={store}>
-            <ThemeProvider value={theme}>
-                <Component {...pageProps} />
+            <ThemeProvider>
+                <MaterialTailwindTheme value={theme}>
+                    <Component {...pageProps} />
+                </MaterialTailwindTheme>
             </ThemeProvider>
         </Provider>
     );

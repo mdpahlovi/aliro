@@ -2,10 +2,13 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Button, IconButton, MobileNav, Navbar, Typography } from "@material-tailwind/react";
+import { Button, IconButton, MobileNav, Navbar, Switch, Typography } from "@material-tailwind/react";
 import LightLogo from "../public/logo/light.jpeg";
+import { useTheme } from "next-themes";
+import { CgClose, CgMenuRight } from "react-icons/cg";
 
-const Main = ({ title = "Redux Content Management" }) => {
+const Main = ({ title = "Aliro Content Management" }) => {
+    const { theme, setTheme } = useTheme();
     const [openNav, setOpenNav] = useState(false);
 
     const navList = (
@@ -33,29 +36,24 @@ const Main = ({ title = "Redux Content Management" }) => {
                 <link rel="icon" href="/favicon.ico" />
                 <title>{title}</title>
             </Head>
-            <nav className="border-b text-black">
+            <nav className="border-b text-content">
                 <div className="container py-4 flex items-center justify-between">
                     <Image src={LightLogo} alt="" width={100} />
                     <div className="hidden lg:block">{navList}</div>
-                    <Button size="sm" className="hidden lg:inline-block">
-                        <span>Sign In</span>
-                    </Button>
-                    <IconButton
-                        ripple={false}
-                        variant="text"
-                        className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-                        onClick={() => setOpenNav(!openNav)}
-                    >
-                        {openNav ? (
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" className="h-6 w-6" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        ) : (
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        )}
-                    </IconButton>
+                    <div className="inline-flex items-center gap-4">
+                        <Switch checked={theme === "dark" ? true : false} onChange={() => (theme === "light" ? setTheme("dark") : setTheme("light"))} />
+                        <Button size="sm" className="hidden lg:inline-block">
+                            Sign In
+                        </Button>
+                        <IconButton
+                            ripple={false}
+                            variant="text"
+                            className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+                            onClick={() => setOpenNav(!openNav)}
+                        >
+                            {openNav ? <CgMenuRight size={24} /> : <CgClose size={24} />}
+                        </IconButton>
+                    </div>
                 </div>
                 <MobileNav open={openNav}>
                     <div className="container mx-auto lg:hidden">
