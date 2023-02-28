@@ -9,7 +9,11 @@ export default function App({ Component, pageProps }) {
         button: {
             styles: {
                 base: { initial: { textTransform: "", fontWeight: "" } },
-                sizes: { sm: { px: "px-5", fontSize: "text-base", borderRadius: "rounded-full" } },
+                sizes: {
+                    sm: { px: "px-5", fontSize: "text-base", borderRadius: "rounded-full" },
+                    md: { fontSize: "text-base", borderRadius: "rounded-full" },
+                    lg: { fontSize: "text-base", borderRadius: "rounded-full" },
+                },
                 variants: {
                     filled: {
                         blue: {
@@ -28,6 +32,17 @@ export default function App({ Component, pageProps }) {
                             focus: "focus:bg-gradient-to-tr from-primary via-secondary to-accent focus:text-background focus:border-background",
                             hover: "hover:bg-gradient-to-tr from-primary via-secondary to-accent hover:text-background hover:border-background",
                         },
+                    },
+                },
+            },
+        },
+        switch: {
+            styles: {
+                colors: {
+                    blue: {
+                        before: "peer-checked:before:bg-gradient-to-tr from-primary via-secondary to-accent",
+                        circle: "",
+                        input: "checked:bg-gradient-to-tr from-primary via-secondary to-accent",
                     },
                 },
             },

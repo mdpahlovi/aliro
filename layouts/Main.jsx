@@ -14,16 +14,16 @@ const Main = ({ title = "Aliro Content Management" }) => {
     const navList = (
         <div className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
             <Link href="/" className="flex items-center">
-                Pages
+                Home
             </Link>
-            <Link href="/" className="flex items-center">
-                Account
+            <Link href="/top-rated" className="flex items-center">
+                Top Rated
             </Link>
-            <Link href="/" className="flex items-center">
-                Blocks
+            <Link href="/about" className="flex items-center">
+                About
             </Link>
-            <Link href="/" className="flex items-center">
-                Docs
+            <Link href="/dashboard" className="flex items-center">
+                Dashboard
             </Link>
         </div>
     );
