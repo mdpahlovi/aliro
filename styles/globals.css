@@ -4,9 +4,9 @@
 
 @layer base {
     :root {
-        --primary: 218 58 45;
-        --secondary: 196 166 57;
-        --accent: 58 183 77;
+        --primary: 80 189 73;
+        --secondary: 231 86 30;
+        --accent: 215 185 91;
         --content: 0 0 0;
         --background: 255 255 255;
         --edge: 238 238 238;
@@ -14,9 +14,9 @@
 }
 
 [data-theme="dark"] {
-    --primary: 218 58 45;
-    --secondary: 196 166 57;
-    --accent: 58 183 77;
+    --primary: 80 189 73;
+    --secondary: 231 86 30;
+    --accent: 215 185 91;
     --content: 255 255 255;
     --background: 24 24 27;
     --edge: 60 60 67;
@@ -25,5 +25,15 @@
 @layer components {
     .container {
         @apply mx-auto px-6;
+    }
+    .border,
+    .border-4,
+    .border-r,
+    .border-l,
+    .border-t,
+    .border-b,
+    .border-x,
+    .border-y {
+        @apply border-edge;
     }
 }

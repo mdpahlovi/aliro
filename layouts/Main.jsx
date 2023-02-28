@@ -2,10 +2,11 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { Button, IconButton, MobileNav, Navbar, Switch, Typography } from "@material-tailwind/react";
-import LightLogo from "../public/logo/light.jpeg";
 import { useTheme } from "next-themes";
 import { CgClose, CgMenuRight } from "react-icons/cg";
+import { Button, IconButton, MobileNav, Switch } from "@material-tailwind/react";
+import LightLogo from "../public/logo/light.png";
+import DarkLogo from "../public/logo/dark.png";
 
 const Main = ({ title = "Aliro Content Management" }) => {
     const { theme, setTheme } = useTheme();
@@ -38,7 +39,7 @@ const Main = ({ title = "Aliro Content Management" }) => {
             </Head>
             <nav className="border-b text-content">
                 <div className="container py-4 flex items-center justify-between">
-                    <Image src={LightLogo} alt="" width={100} />
+                    <Image src={theme === "dark" ? DarkLogo : LightLogo} alt="" width={100} />
                     <div className="hidden lg:block">{navList}</div>
                     <div className="inline-flex items-center gap-4">
                         <Switch checked={theme === "dark" ? true : false} onChange={() => (theme === "light" ? setTheme("dark") : setTheme("light"))} />
