@@ -1,26 +1,26 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import ProductCard from "../components/ProductCard";
+import { useEffect } from "react";
 import Main from "../layouts/Main";
+import { useDispatch, useSelector } from "react-redux";
+import ProductCard from "../components/ProductCard";
+import { productsLoading } from "../redux/action/actionCreators";
+import { loadProductsData } from "../redux/thunk/product/fetchProduct";
 
 export default function Home() {
-    const state = useSelector((state) => state);
-    const [products, setProducts] = useState([]);
+    const dispatch = useDispatch();
+    const { filter, product } = useSelector((state) => state);
+    const { card, products } = product;
 
     useEffect(() => {
-        axios
-            .get("http://localhost:3000/api/products")
-            .then((res) => setProducts(res.data))
-            .catch((error) => console.log(error));
-    }, []);
+        dispatch(productsLoading());
+        dispatch(loadProductsData());
+    }, [dispatch]);
 
-    if (products?.length === 0) {
+    if (products?.data === 0 || products?.loading) {
         return <Main>Loading</Main>;
     } else {
         return (
             <Main className="container section-gap grid grid-cols-3 gap-6">
-                {products.map((product) => (
+                {products?.data.map((product) => (
                     <ProductCard key={product._id} product={product} />
                 ))}
             </Main>

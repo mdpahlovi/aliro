@@ -3,6 +3,7 @@ import { BiListPlus } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { MdDeleteForever } from "react-icons/md";
 import { Button, IconButton } from "@material-tailwind/react";
+import Image from "next/image";
 
 const ProductCard = ({ product }) => {
     const dispatch = useDispatch();
@@ -15,9 +16,7 @@ const ProductCard = ({ product }) => {
                     <p> {product.quantity} </p>
                 </div>
             )}
-            <div className="h-52 w-52 mx-auto">
-                <img src={product.image} alt={product.model} />
-            </div>
+            <Image src={product.image} alt={product.model} className="mx-auto" width={200} height={200} />
             <h1 className="font-bold text-center">{product.model}</h1>
             <p className="text-center font-semibold mb-3">Rating: {product.rating}</p>
             <div className=" flex-1">
