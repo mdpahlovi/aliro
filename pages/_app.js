@@ -36,6 +36,36 @@ export default function App({ Component, pageProps }) {
                 },
             },
         },
+        iconButton: {
+            styles: {
+                base: { initial: { textTransform: "", fontWeight: "" } },
+                sizes: {
+                    sm: { borderRadius: "rounded-full" },
+                    md: { borderRadius: "rounded-full" },
+                    lg: { borderRadius: "rounded-full" },
+                },
+                variants: {
+                    filled: {
+                        blue: {
+                            active: "active:opacity-[0.85]",
+                            backgroud: "bg-gradient-to-tr from-primary via-secondary to-accent",
+                            color: "text-white",
+                            hover: "",
+                            shadow: "",
+                        },
+                    },
+                    outlined: {
+                        blue: {
+                            active: "active:opacity-[0.85]",
+                            border: "border border-primary",
+                            color: "text-primary",
+                            focus: "focus:bg-gradient-to-tr from-primary via-secondary to-accent focus:text-background focus:border-background",
+                            hover: "hover:bg-gradient-to-tr from-primary via-secondary to-accent hover:text-background hover:border-background",
+                        },
+                    },
+                },
+            },
+        },
         switch: {
             styles: {
                 colors: {

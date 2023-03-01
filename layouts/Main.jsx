@@ -8,7 +8,7 @@ import { Button, IconButton, MobileNav, Switch } from "@material-tailwind/react"
 import LightLogo from "../public/logo/light.png";
 import DarkLogo from "../public/logo/dark.png";
 
-const Main = ({ title = "Aliro Content Management" }) => {
+const Main = ({ title = "Aliro Content Management", children, className }) => {
     const { theme, setTheme } = useTheme();
     const [openNav, setOpenNav] = useState(false);
 
@@ -65,6 +65,7 @@ const Main = ({ title = "Aliro Content Management" }) => {
                     </div>
                 </MobileNav>
             </nav>
+            <main className={className}>{children}</main>
         </>
     );
 };
