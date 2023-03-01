@@ -3,17 +3,16 @@ import db from "../../../utilities/db";
 
 const handler = async (req, res) => {
     await db.connect();
+    const id = req.query.id;
     const { method } = req;
     switch (method) {
-        case "GET":
-            const products = await Product.find({});
-            res.send(products);
+        case "PATCH":
+            await Product.findByIdAndUpdate(id, { $set: req.body });
+            res.send({ acknowledge: true, updatedId: id });
             break;
-        case "POST":
-            const product = req.body;
-            const newProduct = new Product(product);
-            const result = await newProduct.save();
-            res.send({ acknowledge: true, insertedId: result._id });
+        case "DELETE":
+            await Product.findByIdAndRemove(id);
+            res.send({ acknowledge: true, removedId: id });
             break;
         default:
             res.status(400).send({ message: "Method not allowed" });
