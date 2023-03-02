@@ -19,7 +19,7 @@ export default function Home() {
         return <Main>Loading</Main>;
     } else {
         return (
-            <Main className="container section-gap grid grid-cols-3 gap-6">
+            <Main className="container section-gap grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {products?.data.map((product) => (
                     <ProductCard key={product._id} product={product} />
                 ))}

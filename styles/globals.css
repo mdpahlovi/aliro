@@ -39,4 +39,8 @@
     .border-y {
         @apply border-edge;
     }
+    .divide-x,
+    .divide-y {
+        @apply divide-edge;
+    }
 }

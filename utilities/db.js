@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const connection = {};
+const mongodb_url = "mongodb+srv://admin:LH5DxAOEqot6u0k3@cluster0.ctxbdjj.mongodb.net/?retryWrites=true&w=majority";
 
 const connect = async () => {
     if (connection.isConnected) {
@@ -15,7 +16,7 @@ const connect = async () => {
         }
         await mongoose.disconnect();
     }
-    const db = await mongoose.connect(process.env.MONGODB_URL);
+    const db = await mongoose.connect(mongodb_url);
     console.log("New Connection");
     connection.isConnected = db.connections[0].readyState;
 };

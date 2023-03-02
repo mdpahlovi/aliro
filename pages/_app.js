@@ -63,6 +63,13 @@ export default function App({ Component, pageProps }) {
                             hover: "hover:bg-gradient-to-tr from-primary via-secondary to-accent hover:text-background hover:border-background",
                         },
                     },
+                    text: {
+                        blue: {
+                            active: "active:bg-content/30",
+                            color: "text-content",
+                            hover: "hover:bg-content/10",
+                        },
+                    },
                 },
             },
         },
