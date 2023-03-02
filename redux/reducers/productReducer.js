@@ -1,4 +1,4 @@
-import { ADD_PRODUCT, DELETE_PRODUCT, LOAD_PRODUCTS, PRODUCTS_LOADING, PRODUCTS_LOADING_ERROR } from "../action/actionTypes";
+import { ADD_PRODUCT, DELETE_PRODUCT, LOAD_PRODUCTS, PRODUCTS_LOADING, PRODUCTS_LOADING_ERROR, UPDATE_PRODUCT } from "../action/actionTypes";
 
 const initialState = {
     card: [],
@@ -28,10 +28,17 @@ export const productReducer = (state = initialState, action) => {
                 products: { loading: false, data: [], error: true },
             };
         case DELETE_PRODUCT:
-            const rest_products = state.products.data.filter((product) => product._id !== action.payload);
             return {
                 ...state,
-                products: { ...state.products, data: rest_products },
+                products: { ...state.products, data: state.products.data.filter((product) => product._id !== action.payload) },
+            };
+        case UPDATE_PRODUCT:
+            return {
+                ...state,
+                products: {
+                    ...state.products,
+                    data: [...state.products.data.filter((product) => product._id !== action.payload.id), { _id: action.payload.id, ...action.payload.data }],
+                },
             };
         default:
             return state;

@@ -24,7 +24,7 @@ const AddProduct = () => {
     };
     return (
         <Dashboard className="flex items-center">
-            <form className="w-full max-w-2xl mx-auto shadow-lg p-6 rounded-lg bg-white grid grid-cols-2 gap-4" onSubmit={handleSubmit(submit)}>
+            <form className="w-full max-w-2xl mx-auto shadow-lg p-6 border rounded-lg grid grid-cols-2 gap-4" onSubmit={handleSubmit(submit)}>
                 <Input type="text" size="lg" {...register("model")} label="Model" className="w-full" />
                 <Input type="text" size="lg" {...register("image")} label="Image" className="w-full" />
                 <Select size="lg" onChange={(value) => setBrand(value)} label="Brand" className="w-full">
