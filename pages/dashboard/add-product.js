@@ -1,11 +1,15 @@
 import { Button, Input, Option, Radio, Select } from "@material-tailwind/react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import Dashboard from "../../layouts/Dashboard";
+import { addProduct } from "../../redux/action/actionCreators";
+import { addProductData } from "../../redux/thunk/product/addProduct";
 
 const AddProduct = () => {
     const [brand, setBrand] = useState("");
     const { register, handleSubmit } = useForm();
+    const dispatch = useDispatch();
 
     const submit = (data) => {
         const product = {
@@ -16,7 +20,7 @@ const AddProduct = () => {
             keyFeature: [data.keyFeature1, data.keyFeature2, data.keyFeature3, data.keyFeature4],
             spec: [],
         };
-        console.log(product);
+        dispatch(addProductData(product));
     };
     return (
         <Dashboard className="flex items-center">
